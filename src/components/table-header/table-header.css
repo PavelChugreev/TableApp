@@ -1,0 +1,14 @@
+.no-sorted{
+    color: blue;
+}
+.sorted{
+    color: red;
+}
+.hide{
+    display: none;
+}
+
+span{
+    padding: 4px;
+    cursor: pointer;
+}
