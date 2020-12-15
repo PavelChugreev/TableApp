@@ -10,46 +10,21 @@ export default class App extends Component {
         super(props)
         this.state = {
             data: [],
-            sorted: "no"
+            sorted: "no",
+            inputSearchValue: "",
         }
 
         this.getResourse = this.getResourse.bind(this);
         this.checkRepeatedId = this.checkRepeatedId.bind(this);
         this.onSortUp = this.onSortUp.bind(this);
         this.onSortDown = this.onSortDown.bind(this);
+        this.onUpdateSearchValue = this.onUpdateSearchValue.bind(this);
+        this.searchRows = this.searchRows.bind(this);
 
         this.getResourse("http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D")
             .then(response => {
                 this.setState({ data: response })
             })
-    }
-
-    checkRepeatedId(data) {
-        const uniqueId = [];
-        let newArray = data.filter(el => {
-            if (uniqueId.includes(el.id)) return;
-            uniqueId.push(el.id);
-            return true;
-        })
-        return newArray;
-
-        // let newArray = [];
-        // for (let i = 0; i < data.length; i++) {
-        //     const element = data[i];
-        //     const elementId = element.id;
-        //     let isAlreadyInNewArray = false;
-        //     for (let k = 0; k < newArray.length; k++) {
-        //         const newArrayElement = newArray[k];
-        //         const newArrayElementId = newArrayElement.id;
-        //         if (elementId === newArrayElementId) {
-        //             isAlreadyInNewArray = true;
-        //         }
-        //     }
-        //     if (!isAlreadyInNewArray) {
-        //         newArray.push(element);
-        //     }
-        // }
-        // return newArray;
     }
 
     async getResourse(url) {
@@ -60,8 +35,17 @@ export default class App extends Component {
         return await response.json()
     }
 
+    checkRepeatedId(data) {
+        const uniqueId = [];
+        let newArray = data.filter(el => {
+            if (uniqueId.includes(el.id)) return;
+            uniqueId.push(el.id);
+            return true;
+        })
+        return newArray;
+    }
+
     onSortUp(data, keyName) {
-        const up = "up"
         const newData = data.sort(function (a, b) {
             if (a[keyName] > b[keyName]) {
                 return 1;
@@ -87,24 +71,37 @@ export default class App extends Component {
         this.setState({ data: newData })
     }
 
+    onUpdateSearchValue(value){
+        this.setState({inputSearchValue: value})
+    }
+
+    searchRows(data, value){
+        if(value.length === 0){
+            return data
+        } 
+            return data.filter(item => {
+                const str = (`${item.id}${item.phone}${item.firstName}${item.lastName}${item.email}${item.description}`).toLocaleLowerCase()
+
+                if(str.indexOf(value.toLowerCase()) > -1){
+                    return item
+                }
+            });
+    }
+
     render() {
-        const { data, sorted } = this.state;
+        const { data, sorted, inputSearchValue } = this.state;
 
         const checked = this.checkRepeatedId(data);
+        const visiblePosts = this.searchRows(checked, inputSearchValue)
+
         return (
             <div className="app">
-                <button
-                    className="btn btn-info"
-                    onClick={() => console.log(this.state.res)}
-                >TEST</button>
-                <button
-                    onClick={() => this.changeData(this.state.res)}
-                >TEST-2</button>
-                <button
-                    onClick={() => console.log(this.state.data)}
-                >TEST-3</button>
                 <div className="search-panel d-flex">
-                    <SearchPanel/>
+                    <SearchPanel
+                        data={visiblePosts}
+                        onUpdateSearchValue={this.onUpdateSearchValue}
+                        searchRows={this.searchRows}
+                    />
                 </div>
                 <div className="add-form d-flex">
                     <AddForm
@@ -112,7 +109,7 @@ export default class App extends Component {
                     />
                 </div>
                 <Table
-                    data={checked}
+                    data={visiblePosts}
                     sorted={sorted}
                     changeAny={this.changeAny}
                     onSortUp={this.onSortUp}
