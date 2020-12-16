@@ -20,6 +20,7 @@ export default class App extends Component {
         this.onSortDown = this.onSortDown.bind(this);
         this.onUpdateSearchValue = this.onUpdateSearchValue.bind(this);
         this.searchRows = this.searchRows.bind(this);
+        this.addItem = this.addItem.bind(this);
 
         this.getResourse("http://www.filltext.com/?rows=32&id=%7Bnumber%7C1000%7D&firstName=%7BfirstName%7D&lastName=%7BlastName%7D&email=%7Bemail%7D&phone=%7Bphone%7C(xxx)xxx-xx-xx%7D&address=%7BaddressObject%7D&description=%7Blorem%7C32%7D")
             .then(response => {
@@ -80,12 +81,28 @@ export default class App extends Component {
             return data
         } 
             return data.filter(item => {
-                const str = (`${item.id}${item.phone}${item.firstName}${item.lastName}${item.email}${item.description}`).toLocaleLowerCase()
+                const str = Object.entries(item).map(([key, value]) => value).join("").toLocaleLowerCase();
 
                 if(str.indexOf(value.toLowerCase()) > -1){
                     return item
                 }
             });
+    }
+
+    addItem(id, firstName, lastName, email, phone){
+        const newRow = {
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phone: phone,
+            address: {streetAddress:"", city:"", state:"", zip:""},
+            description: " "
+        }
+        this.setState(({data}) => {
+            const newData = [ newRow, ...data];
+            return ( {data: newData} )
+        })
     }
 
     render() {
@@ -106,15 +123,16 @@ export default class App extends Component {
                 <div className="add-form d-flex">
                     <AddForm
                         getResourse={this.getResourse}
+                        addItem={this.addItem}
                     />
                 </div>
-                <Table
-                    data={visiblePosts}
-                    sorted={sorted}
-                    changeAny={this.changeAny}
-                    onSortUp={this.onSortUp}
-                    onSortDown={this.onSortDown}
-                />
+                    <Table
+                        data={visiblePosts}
+                        sorted={sorted}
+                        changeAny={this.changeAny}
+                        onSortUp={this.onSortUp}
+                        onSortDown={this.onSortDown}
+                    />
                 {/* <InfoPanel
                     onAdd={this.addItem}
                 /> */}

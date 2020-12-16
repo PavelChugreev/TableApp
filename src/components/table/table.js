@@ -49,9 +49,9 @@ export default class  Table extends Component  {
                         email={item.email}
                         tel={item.phone}
                         address={`
-                            ${item.address.streetAddress}, 
-                            ${item.address.city}, 
-                            ${item.address.state}, 
+                            ${item.address.streetAddress} 
+                            ${item.address.city} 
+                            ${item.address.state} 
                             ${item.address.zip}
                         `}
                         description={item.description}
