@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import "./table-item.css";
 
 export default class TableItem extends Component {
     constructor(props) {
@@ -9,15 +8,14 @@ export default class TableItem extends Component {
         const {id, name, surname, email, tel, address, description} = this.props;
         
         return(
-            // <tr className={classNames}>
             <>
-                <td>{id}</td>
-                <td>{name}</td>
-                <td>{surname}</td>
-                <td>{email}</td>
-                <td>{tel}</td>
-                <td>{address}</td>
-                <td>{description}</td>
+                <th><div className="col">{id}</div></th>
+                <td><div className="col">{name}</div></td>
+                <td><div className="col">{surname}</div></td>
+                <td><div className="col">{email}</div></td>
+                <td><div className="col">{tel}</div></td>
+                <td><div className="col">{address}</div></td>
+                <td><div className="col">{description}</div></td>
             </>
         );
     }

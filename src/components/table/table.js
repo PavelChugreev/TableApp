@@ -1,47 +1,87 @@
 import React, {Component} from 'react';
 import TableItem from "../table-item/table-item";
 import TableHeader from "../table-header/table-header";
-import "./table.css";
-
+import InfoPanel from "../info-panel/info-panel";
 
 export default class  Table extends Component  {
     constructor(props){
         super(props)
-        this.state={
+        this.state ={
+            info: { user: "", description: " ", address: "", city: "", state: "", zip: "" },
+            showInfo: false
         }
 
-        // this.onSortUp = this.onSortUp.bind(this);
-        // this.onSortDown = this.onSortDown.bind(this);
+        this.onSortUp = this.onSortUp.bind(this);
+        this.onSortDown = this.onSortDown.bind(this);
+        this.onShowInfo = this.onShowInfo.bind(this);
+        this.onCloseInfo = this.onCloseInfo.bind(this);
+    }   
 
+    onSortUp(data, keyName) {
+        const newData = data.sort(function (a, b) {
+            if (a[keyName] > b[keyName]) {
+                return 1;
+            }
+            if (a[keyName] < b[keyName]) {
+                return -1;
+            }
+            return 0;
+        });
+        this.setState({ data: newData })
+    }
+
+    onSortDown(data, keyName) {
+        const newData = data.sort(function (a, b) {
+            if (a[keyName] > b[keyName]) {
+                return -1;
+            }
+            if (a[keyName] < b[keyName]) {
+                return 1;
+            }
+            return 0;
+        });
+        this.setState({ data: newData })
+    }
+
+    onShowInfo(tableItem){
+        this.setState(() => {
+            const user = `${tableItem.firstName} ${tableItem.lastName}`;
+            const description = tableItem.description;
+            const address = tableItem.address.streetAddress;
+            const city = tableItem.address.city;
+            const state = tableItem.address.state;
+            const zip = tableItem.address.zip;
+            const show = true;
+
+            return ({
+                info: {
+                    user: user,
+                    description: description,
+                    address: address,
+                    city: city,
+                    state: state,
+                    zip: zip
+                },
+                showInfo: show
+            })
+        })
+    }
+
+    onCloseInfo(){
+        const hidden = false;
+        this.setState({showInfo: hidden})
     }
 
     render() {
-        const {data, onSortUp, onSortDown, sorted} = this.props;
-        // const {sorted} =this.state
-
-        // const arrows = (keyName) => {
-        //     return(
-        //         <div className="">
-        //             <span
-        //                 className="sort"
-        //                 onClick={() => onSortUp(data, `${keyName}`)}
-        //                 onClick={this.changeSortClass}
-        //                 >
-        //                 <i className="fa fa-sort-up"></i>
-        //             </span>
-        //             <span
-        //                 onClick={() => onSortDown(data, `${keyName}`)}
-        //                 onClick={this.changeSortClass}
-        //             >
-        //                 <i className="fa fa-sort-down"></i>
-        //             </span>
-        //         </div>
-        //     )
-        // }
+        const {data, sorted, onShowInfo} = this.props;
+        const {info, showInfo} = this.state;
 
         let elements = data.map(item => {          
             return(
-                <tr key={item.id} className="table">
+                <tr 
+                    key={item.id} 
+                    onClick={() => this.onShowInfo(item)}
+                >
                     <TableItem
                         id={item.id}
                         name={item.firstName}
@@ -61,26 +101,26 @@ export default class  Table extends Component  {
         })
     
         return(
-            <table className="">
-                <tbody>
-                    {/* <tr>
-                        <td>id {arrows("id")}</td>
-                        <td>name {arrows("firstName")}</td>
-                        <td>surname {arrows("lastName")}</td>
-                        <td>email {arrows("email")}</td>
-                        <td>tel {arrows("phone")}</td>
-                        <td>address</td>
-                        <td>description {arrows("description")}</td>
-                    </tr> */}
-                    <TableHeader
-                        data={data}
-                        sorted={sorted}
-                        onSortUp={onSortUp}
-                        onSortDown={onSortDown}    
-                    />
-                    {elements}
-                </tbody>
-            </table>
+            <div>
+                <InfoPanel
+                    info={info}
+                    onCloseInfo={this.onCloseInfo}
+                    showInfo={showInfo}
+                />
+                <table className="table-secondary table-bordered table-hover">
+                    <thead>
+                        <TableHeader
+                            data={data}
+                            sorted={sorted}
+                            onSortUp={this.onSortUp}
+                            onSortDown={this.onSortDown}    
+                        />
+                    </thead>
+                    <tbody>
+                        {elements}
+                    </tbody>
+                </table>
+            </div>
         )
     }
 };

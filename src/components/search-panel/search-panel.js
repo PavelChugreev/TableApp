@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import "./search-panel.css";
 
 export default class SearchPanel extends Component {
     constructor(props){
@@ -20,24 +19,24 @@ export default class SearchPanel extends Component {
         const {inputSearchValue } = this.state;
 
         return (
-            <>
+            <div className="input-group mb-3">
                 <input
                     type="text"
                     placeholder="Write here what you want to search"
-                    className="form-control new-post-label"
+                    className="form-control"
                     onChange={this.onUpdateSearch}
                 />
                 <button
                     type="submit"
                     placeholder="Write down your minds"
-                    className="btn btn-info"
+                    className="btn btn-secondary"
                     onClick={() => {
                         onUpdateSearchValue(inputSearchValue); 
                         searchRows(data, inputSearchValue)
                     }}
                 >SEARCH
                 </button>
-            </>
+            </div>
         );
     }
 };

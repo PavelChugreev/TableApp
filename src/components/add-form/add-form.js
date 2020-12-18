@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import "./add-form.css";
 
 export default class AddForm extends Component {
     constructor(props){
@@ -12,7 +11,7 @@ export default class AddForm extends Component {
             phone: "",
         }
 
-        this.show = "btn btn-outline-secondary"
+        this.show = "btn btn-secondary"
         this.hide = `${this.show} d-none`;
         this.btnClass = "";
 
@@ -46,42 +45,42 @@ export default class AddForm extends Component {
 
         return (
             <form 
-                className="d-flex"
+                className="input-group mb-3"
                 onSubmit={(e) => this.onSubmit(e, id, firstName, lastName, email, phone)}
-            >
+            >               
                 <input 
                     type="number"
                     value={id}
                     placeholder="id"
-                    className="form-control new-post-label"
+                    className="form-control"
                     onChange={(e) => {this.onChangeAddValue(e, "id")}}
                 />
                 <input 
                     type="text"
                     value={firstName}
                     placeholder="First name"
-                    className="form-control new-post-label"
+                    className="form-control"
                     onChange={(e) => {this.onChangeAddValue(e, "firstName")}}
                 />
                 <input 
                     type="text"
                     value={lastName}
                     placeholder="Last name"
-                    className="form-control new-post-label"
+                    className="form-control"
                     onChange={(e) => this.onChangeAddValue(e, "lastName")}
                 />
                 <input 
                     type="email"
                     value={email}
                     placeholder="Email"
-                    className="form-control new-post-label"
+                    className="form-control"
                     onChange={(e) => this.onChangeAddValue(e, "email")}
                 />
                 <input 
                     type="tel"
                     value={phone}
                     placeholder="Phone"
-                    className="form-control new-post-label"
+                    className="form-control"
                     onChange={(e) => this.onChangeAddValue(e, "phone")}
                 />
                 <button

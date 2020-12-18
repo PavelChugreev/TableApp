@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SearchPanel from "../search-panel/search-panel";
 import AddForm from "../add-form/add-form";
 import Table from "../table/table";
-// import InfoPanel from "../info-panel/info-panel";
 import "./app.css";
 
 export default class App extends Component {
@@ -16,8 +15,6 @@ export default class App extends Component {
 
         this.getResourse = this.getResourse.bind(this);
         this.checkRepeatedId = this.checkRepeatedId.bind(this);
-        this.onSortUp = this.onSortUp.bind(this);
-        this.onSortDown = this.onSortDown.bind(this);
         this.onUpdateSearchValue = this.onUpdateSearchValue.bind(this);
         this.searchRows = this.searchRows.bind(this);
         this.addItem = this.addItem.bind(this);
@@ -44,32 +41,6 @@ export default class App extends Component {
             return true;
         })
         return newArray;
-    }
-
-    onSortUp(data, keyName) {
-        const newData = data.sort(function (a, b) {
-            if (a[keyName] > b[keyName]) {
-                return 1;
-            }
-            if (a[keyName] < b[keyName]) {
-                return -1;
-            }
-            return 0;
-        });
-        this.setState({ data: newData })
-    }
-
-    onSortDown(data, keyName) {
-        const newData = data.sort(function (a, b) {
-            if (a[keyName] > b[keyName]) {
-                return -1;
-            }
-            if (a[keyName] < b[keyName]) {
-                return 1;
-            }
-            return 0;
-        });
-        this.setState({ data: newData })
     }
 
     onUpdateSearchValue(value){
@@ -106,36 +77,27 @@ export default class App extends Component {
     }
 
     render() {
-        const { data, sorted, inputSearchValue } = this.state;
+        const {data, sorted, inputSearchValue, info, showInfo} = this.state;
 
         const checked = this.checkRepeatedId(data);
-        const visiblePosts = this.searchRows(checked, inputSearchValue)
+        const visiblePosts = this.searchRows(checked, inputSearchValue);
 
         return (
-            <div className="app">
-                <div className="search-panel d-flex">
-                    <SearchPanel
-                        data={visiblePosts}
-                        onUpdateSearchValue={this.onUpdateSearchValue}
-                        searchRows={this.searchRows}
-                    />
-                </div>
-                <div className="add-form d-flex">
-                    <AddForm
-                        getResourse={this.getResourse}
-                        addItem={this.addItem}
-                    />
-                </div>
-                    <Table
-                        data={visiblePosts}
-                        sorted={sorted}
-                        changeAny={this.changeAny}
-                        onSortUp={this.onSortUp}
-                        onSortDown={this.onSortDown}
-                    />
-                {/* <InfoPanel
-                    onAdd={this.addItem}
-                /> */}
+            <div className="container">
+                <h1><span class="badge badge-secondary">User list</span></h1>
+                <SearchPanel
+                    data={visiblePosts}
+                    onUpdateSearchValue={this.onUpdateSearchValue}
+                    searchRows={this.searchRows}
+                />
+                <AddForm
+                    addItem={this.addItem}
+                />
+                <Table
+                    data={visiblePosts}
+                    sorted={sorted}
+                    changeAny={this.changeAny}
+                />
             </div>
         );
     }
