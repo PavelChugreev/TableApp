@@ -73,7 +73,7 @@ export default class  Table extends Component  {
     }
 
     render() {
-        const {data, sorted, onShowInfo} = this.props;
+        const {data, sorted} = this.props;
         const {info, showInfo} = this.state;
 
         let elements = data.map(item => {          
