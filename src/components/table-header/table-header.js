@@ -29,7 +29,7 @@ export default class TableHeader extends Component {
         const {data, onSortUp, onSortDown} = this.props;
         const {up, down} = this.state;
 
-        const line = (title, selector, data, up, down) => {
+        const headerItem = (title, selector,  ) => {
             return (
                 <th scope="col">
                     <div className="d-flex">
@@ -53,13 +53,13 @@ export default class TableHeader extends Component {
 
         return (
             <tr>
-                {line('ID', "id", data, up, down)}
-                {line('Name', "firstName", data, up, down)}
-                {line('Surname', "lastName", data, up, down)}
-                {line('Email', "email", data, up, down)}
-                {line('Phone number', "phone", data, up, down)}
+                {headerItem('ID', "id")}
+                {headerItem('Name', "firstName")}
+                {headerItem('Surname', "lastName")}
+                {headerItem('Email', "email")}
+                {headerItem('Phone number', "phone")}
                 <th><div className="col">Address</div></th>
-                {line('Description', "description", data, up, down)}
+                {headerItem('Description', "description")}
             </tr>
         )
     }

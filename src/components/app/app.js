@@ -77,14 +77,14 @@ export default class App extends Component {
     }
 
     render() {
-        const {data, sorted, inputSearchValue, info, showInfo} = this.state;
+        const {data, sorted, inputSearchValue} = this.state;
 
         const checked = this.checkRepeatedId(data);
         const visiblePosts = this.searchRows(checked, inputSearchValue);
 
         return (
             <div className="container">
-                <h1><span class="badge badge-secondary">User list</span></h1>
+                <h1><span className="badge badge-secondary">User list</span></h1>
                 <SearchPanel
                     data={visiblePosts}
                     onUpdateSearchValue={this.onUpdateSearchValue}
