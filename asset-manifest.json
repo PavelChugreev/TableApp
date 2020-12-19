@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/http//PavelChugreev.github.io/TableApp/static/css/main.7ec5cf78.chunk.css",
-    "main.js": "/http//PavelChugreev.github.io/TableApp/static/js/main.a9268915.chunk.js",
-    "main.js.map": "/http//PavelChugreev.github.io/TableApp/static/js/main.a9268915.chunk.js.map",
-    "runtime-main.js": "/http//PavelChugreev.github.io/TableApp/static/js/runtime-main.a1c61417.js",
-    "runtime-main.js.map": "/http//PavelChugreev.github.io/TableApp/static/js/runtime-main.a1c61417.js.map",
-    "static/js/2.a151427e.chunk.js": "/http//PavelChugreev.github.io/TableApp/static/js/2.a151427e.chunk.js",
-    "static/js/2.a151427e.chunk.js.map": "/http//PavelChugreev.github.io/TableApp/static/js/2.a151427e.chunk.js.map",
-    "index.html": "/http//PavelChugreev.github.io/TableApp/index.html",
-    "static/css/main.7ec5cf78.chunk.css.map": "/http//PavelChugreev.github.io/TableApp/static/css/main.7ec5cf78.chunk.css.map",
-    "static/js/2.a151427e.chunk.js.LICENSE.txt": "/http//PavelChugreev.github.io/TableApp/static/js/2.a151427e.chunk.js.LICENSE.txt"
+    "main.css": "/TableApp/static/css/main.7ec5cf78.chunk.css",
+    "main.js": "/TableApp/static/js/main.a9268915.chunk.js",
+    "main.js.map": "/TableApp/static/js/main.a9268915.chunk.js.map",
+    "runtime-main.js": "/TableApp/static/js/runtime-main.043e9ff7.js",
+    "runtime-main.js.map": "/TableApp/static/js/runtime-main.043e9ff7.js.map",
+    "static/js/2.a151427e.chunk.js": "/TableApp/static/js/2.a151427e.chunk.js",
+    "static/js/2.a151427e.chunk.js.map": "/TableApp/static/js/2.a151427e.chunk.js.map",
+    "index.html": "/TableApp/index.html",
+    "static/css/main.7ec5cf78.chunk.css.map": "/TableApp/static/css/main.7ec5cf78.chunk.css.map",
+    "static/js/2.a151427e.chunk.js.LICENSE.txt": "/TableApp/static/js/2.a151427e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a1c61417.js",
+    "static/js/runtime-main.043e9ff7.js",
     "static/js/2.a151427e.chunk.js",
     "static/css/main.7ec5cf78.chunk.css",
     "static/js/main.a9268915.chunk.js"
