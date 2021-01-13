@@ -1,0 +1,6 @@
+.input_form input{
+    min-width: 180px;
+}
+.input_form button{
+    min-width: 60px;
+}

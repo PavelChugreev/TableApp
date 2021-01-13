@@ -31,36 +31,37 @@ export default class TableHeader extends Component {
 
         const headerItem = (title, selector,  ) => {
             return (
-                <th scope="col">
-                    <div className="d-flex">
-                        <div className="col">{title}</div>
-                        <div className="d-flex">
-                            <span
-                                className={`sort ${up[selector]}`}
-                                onClick={() => { onSortUp(data, selector); this.changeSortStatusUp(selector) }}>
-                                <i className="fa fa-sort-up"></i>
-                            </span>
-                            <span
-                                className={`sort ${down[selector]}`}
-                                onClick={() => { onSortDown(data, selector); this.changeSortStatusUpDown(selector) }}>
-                                <i className="fa fa-sort-down"></i>
-                            </span>
+                <>
+                    <div className="title">{title}</div>
+                    <div className="sort_wrapper">
+                        <div className="sort_item"
+                            className={`sort ${up[selector]}`}
+                            onClick={() => { onSortUp(data, selector); this.changeSortStatusUp(selector) }}>
+                            <i className="fa fa-sort-up"></i>
+                        </div>
+                        <div className="sort_item"
+                            className={`sort ${down[selector]}`}
+                            onClick={() => { onSortDown(data, selector); this.changeSortStatusUpDown(selector) }}>
+                            <i className="fa fa-sort-down"></i>
                         </div>
                     </div>
-                </th>
+                </>
             )
         }
 
         return (
-            <tr>
-                {headerItem('ID', "id")}
-                {headerItem('Name', "firstName")}
-                {headerItem('Surname', "lastName")}
-                {headerItem('Email', "email")}
-                {headerItem('Phone number', "phone")}
-                <th><div className="col">Address</div></th>
-                {headerItem('Description', "description")}
-            </tr>
+            <div className="table_header container">
+                <div className="row">
+                <div className="table_header_item col-md-1">{headerItem('ID', "id")}</div>
+                <div className="table_header_item col-md-1">{headerItem('Name', "firstName")}</div>
+                <div className="table_header_item col-md-1">{headerItem('Surname', "lastName")}</div>
+                <div className="table_header_item col-md-2">{headerItem('Email', "email")}</div>
+                <div className="table_header_item col-md-2">{headerItem('Phone number', "phone")}</div>
+                <div className="table_header_item col-md-2">Address</div>
+                <div className="table_header_item col-md-3">{headerItem('Description', "description")}</div>                   
+                    {/* <th><div className="col"></div></th> */}
+                </div>
+            </div>
         )
     }
 }

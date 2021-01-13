@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./add-form.css"
 
 export default class AddForm extends Component {
     constructor(props){
@@ -45,7 +46,7 @@ export default class AddForm extends Component {
 
         return (
             <form 
-                className="input-group mb-3"
+                className=" input-group mb-3 input_form"
                 onSubmit={(e) => this.onSubmit(e, id, firstName, lastName, email, phone)}
             >               
                 <input 

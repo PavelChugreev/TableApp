@@ -1,14 +1,42 @@
 .no-sorted{
     color: blue;
 }
-span.sorted i{
+.sorted i{
     color: red;
 }
 .hide{
     display: none;
 }
 
-span{
-    padding: 0 5px;
+.table_header{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #000000;
+}
+.table_header_item{
+    padding: 0;
+    display: flex;
+    justify-content: start;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+.sort_wrapper{
+    display: flex;
+    margin-left: 5px;
     cursor: pointer;
+}
+.sort{
+    margin-left: 2px;
+}
+
+@media (max-width: 1200px) {
+    .sort_wrapper {width: 80%;}
+}
+
+@media (max-width: 767px) {
+    .table_header_item{
+        display: flex;
+        justify-content: space-between;
+        padding: 1px 0;
+    }
+    .sort_wrapper {width: 60%;}
 }

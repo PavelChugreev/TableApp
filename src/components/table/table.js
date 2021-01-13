@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import TableItem from "../table-item/table-item";
 import TableHeader from "../table-header/table-header";
 import InfoPanel from "../info-panel/info-panel";
+import "./table.css";
 
 export default class  Table extends Component  {
     constructor(props){
@@ -78,7 +79,7 @@ export default class  Table extends Component  {
 
         let elements = data.map(item => {          
             return(
-                <tr 
+                <div className="row table_item" 
                     key={item.id} 
                     onClick={() => this.onShowInfo(item)}
                 >
@@ -96,7 +97,7 @@ export default class  Table extends Component  {
                         `}
                         description={item.description}
                     />
-                </tr>
+                </div>
             );
         })
     
@@ -107,19 +108,17 @@ export default class  Table extends Component  {
                     onCloseInfo={this.onCloseInfo}
                     showInfo={showInfo}
                 />
-                <table className="table-secondary table-bordered table-hover">
-                    <thead>
-                        <TableHeader
-                            data={data}
-                            sorted={sorted}
-                            onSortUp={this.onSortUp}
-                            onSortDown={this.onSortDown}    
-                        />
-                    </thead>
-                    <tbody>
+                <div className="table">
+                    <TableHeader
+                        data={data}
+                        sorted={sorted}
+                        onSortUp={this.onSortUp}
+                        onSortDown={this.onSortDown}    
+                    />
+                    <div className="table_body container">
                         {elements}
-                    </tbody>
-                </table>
+                    </div>
+                </div>
             </div>
         )
     }
