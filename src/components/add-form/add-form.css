@@ -1,4 +1,4 @@
-.input_form input{
+.input_form .form-control{
     min-width: 180px;
 }
 .input_form button{
