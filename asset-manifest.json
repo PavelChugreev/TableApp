@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TableApp/static/css/main.827111e8.chunk.css",
+    "main.css": "/TableApp/static/css/main.1b5ac343.chunk.css",
     "main.js": "/TableApp/static/js/main.24b7cac2.chunk.js",
     "main.js.map": "/TableApp/static/js/main.24b7cac2.chunk.js.map",
     "runtime-main.js": "/TableApp/static/js/runtime-main.043e9ff7.js",
@@ -8,13 +8,13 @@
     "static/js/2.bf0eafe2.chunk.js": "/TableApp/static/js/2.bf0eafe2.chunk.js",
     "static/js/2.bf0eafe2.chunk.js.map": "/TableApp/static/js/2.bf0eafe2.chunk.js.map",
     "index.html": "/TableApp/index.html",
-    "static/css/main.827111e8.chunk.css.map": "/TableApp/static/css/main.827111e8.chunk.css.map",
+    "static/css/main.1b5ac343.chunk.css.map": "/TableApp/static/css/main.1b5ac343.chunk.css.map",
     "static/js/2.bf0eafe2.chunk.js.LICENSE.txt": "/TableApp/static/js/2.bf0eafe2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.043e9ff7.js",
     "static/js/2.bf0eafe2.chunk.js",
-    "static/css/main.827111e8.chunk.css",
+    "static/css/main.1b5ac343.chunk.css",
     "static/js/main.24b7cac2.chunk.js"
   ]
 }
