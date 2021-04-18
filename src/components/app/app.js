@@ -21,7 +21,7 @@ export default class App extends Component {
         this.searchRows = this.searchRows.bind(this);
         this.addItem = this.addItem.bind(this);
 
-        this.getResourse("http://www.filltext.com/?rows=100&id=%7Bnumber%7C1000%7D&fname={firstName}&lname={lastName}&email={email}&phone={phone|format}&address=%7BaddressObject%7D&description=%7Blorem%7C10%7D")
+        this.getResourse("https://www.filltext.com/?rows=100&id=%7Bnumber%7C1000%7D&fname={firstName}&lname={lastName}&email={email}&phone={phone|format}&address=%7BaddressObject%7D&description=%7Blorem%7C10%7D")
             .then(response => {
                 console.log(response)
                 this.setState({ data: response })
