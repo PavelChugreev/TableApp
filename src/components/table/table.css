@@ -4,7 +4,8 @@
     border-bottom: 1px solid #000000;
 }
 .item{
-    padding: 0;
+    padding: 10px;
     font-size: 13px;
     align-self: center;
+    word-wrap: break-word;
 }

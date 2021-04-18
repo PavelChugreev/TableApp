@@ -21,11 +21,11 @@ export default class App extends Component {
         this.searchRows = this.searchRows.bind(this);
         this.addItem = this.addItem.bind(this);
 
-        this.getResourse("https://www.filltext.com/?rows=100&id=%7Bnumber%7C1000%7D&fname={firstName}&lname={lastName}&email={email}&phone={phone|format}&address=%7BaddressObject%7D&description=%7Blorem%7C10%7D")
+        this.getResourse("https://jsonplaceholder.typicode.com/users")
             .then(response => {
-                console.log(response)
                 this.setState({ data: response })
             })
+        //https://www.filltext.com/?rows=100&id=%7Bnumber%7C1000%7D&fname={firstName}&lname={lastName}&email={email}&phone={phone|format}&address=%7BaddressObject%7D&description=%7Blorem%7C10%7D
     }
 
     async getResourse(url) {
@@ -63,15 +63,15 @@ export default class App extends Component {
             });
     }
 
-    addItem(id, fname, lname, email, phone){
+    addItem(id, name, username, email, phone){
         const newRow = {
             id: id,
-            fname: fname,
-            lname: lname,
+            name: name,
+            username: username,
             email: email,
             phone: phone,
-            address: {streetAddress:"", city:"", state:"", zip:""},
-            description: " "
+            address: {street:"", city:"", suite:"", zipcode:""},
+            website: " "
         }
         this.setState(({data}) => {
             const newData = [ newRow, ...data];
@@ -81,6 +81,8 @@ export default class App extends Component {
 
     render() {
         const {data, sorted, inputSearchValue} = this.state;
+
+        console.log(data)
 
         const checked = this.checkRepeatedId(data);
         const visiblePosts = this.searchRows(checked, inputSearchValue);

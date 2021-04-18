@@ -5,8 +5,8 @@ export default class TableHeader extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            up: { id: "", fname: "", lname: "", email: "", phone: "", description: "" },
-            down: { id: "", fname: "", lname: "", email: "", phone: "", description: "" }
+            up: { id: "", fname: "", lname: "", email: "", phone: "", website: "" },
+            down: { id: "", fname: "", lname: "", email: "", phone: "", website: "" }
         }
 
         this.changeSortStatusUp = this.changeSortStatusUp.bind(this);
@@ -52,13 +52,13 @@ export default class TableHeader extends Component {
         return (
             <div className="table_header container">
                 <div className="row">
-                <div className="table_header_item col-md-1">{headerItem('ID', "id")}</div>
-                <div className="table_header_item col-md-1">{headerItem('Name', "fname")}</div>
-                <div className="table_header_item col-md-1">{headerItem('Surname', "lname")}</div>
-                <div className="table_header_item col-md-2">{headerItem('Email', "email")}</div>
-                <div className="table_header_item col-md-2">{headerItem('Phone number', "phone")}</div>
-                <div className="table_header_item col-md-2">Address</div>
-                <div className="table_header_item col-md-3">{headerItem('Description', "description")}</div>                   
+                <div className="table_header_item col-lg-0">{headerItem('ID', "id")}</div>
+                <div className="table_header_item col-lg-2">{headerItem('Name', "name")}</div>
+                <div className="table_header_item col-lg-1">{headerItem('Username', "username")}</div>
+                <div className="table_header_item col-lg-2">{headerItem('Email', "email")}</div>
+                <div className="table_header_item col-lg-2">{headerItem('Phone', "phone")}</div>
+                <div className="table_header_item col-lg-2">Address</div>
+                <div className="table_header_item col-lg-2">{headerItem('Website', "website")}</div>                   
                     {/* <th><div className="col"></div></th> */}
                 </div>
             </div>

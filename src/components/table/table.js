@@ -7,8 +7,8 @@ import "./table.css";
 export default class  Table extends Component  {
     constructor(props){
         super(props)
-        this.state ={
-            info: { user: "", description: " ", address: "", city: "", state: "", zip: "" },
+        this.state = {
+            info: { user: "", website: " ", address: "", city: "", suite: "", zipcode: "" },
             showInfo: false
         }
 
@@ -46,22 +46,22 @@ export default class  Table extends Component  {
 
     onShowInfo(tableItem){
         this.setState(() => {
-            const user = `${tableItem.fname} ${tableItem.lname}`;
-            const description = tableItem.description;
-            const address = tableItem.address.streetAddress;
+            const user = `${tableItem.name} - "${tableItem.username}"`;
+            const website = tableItem.website;
+            const address = tableItem.address.street;
             const city = tableItem.address.city;
-            const state = tableItem.address.state;
-            const zip = tableItem.address.zip;
+            const suite = tableItem.address.suite;
+            const zipcode = tableItem.address.zipcode;
             const show = true;
 
             return ({
                 info: {
                     user: user,
-                    description: description,
+                    website: website,
                     address: address,
                     city: city,
-                    state: state,
-                    zip: zip
+                    suite: suite,
+                    zipcode: zipcode
                 },
                 showInfo: show
             })
@@ -77,7 +77,8 @@ export default class  Table extends Component  {
         const {data, sorted} = this.props;
         const {info, showInfo} = this.state;
 
-        let elements = data.map(item => {          
+        let elements = data.map(item => {     
+            console.log(item.website)
             return(
                 <div className="row table_item" 
                     key={item.id} 
@@ -85,17 +86,17 @@ export default class  Table extends Component  {
                 >
                     <TableItem
                         id={item.id}
-                        name={item.fname}
-                        surname={item.lname}
+                        name={item.name}
+                        surname={item.username}
                         email={item.email}
                         tel={item.phone}
                         address={`
-                            ${item.address.streetAddress} 
+                            ${item.address.street} 
                             ${item.address.city} 
-                            ${item.address.state} 
-                            ${item.address.zip}
+                            ${item.address.suite} 
+                            ${item.address.zipcode}
                         `}
-                        description={item.description}
+                        website={item.website}
                     />
                 </div>
             );
