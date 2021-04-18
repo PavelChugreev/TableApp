@@ -5,8 +5,8 @@ export default class TableHeader extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            up: { id: "", firstName: "", lastName: "", email: "", phone: "", description: "" },
-            down: { id: "", firstName: "", lastName: "", email: "", phone: "", description: "" }
+            up: { id: "", fname: "", lname: "", email: "", phone: "", description: "" },
+            down: { id: "", fname: "", lname: "", email: "", phone: "", description: "" }
         }
 
         this.changeSortStatusUp = this.changeSortStatusUp.bind(this);
@@ -53,8 +53,8 @@ export default class TableHeader extends Component {
             <div className="table_header container">
                 <div className="row">
                 <div className="table_header_item col-md-1">{headerItem('ID', "id")}</div>
-                <div className="table_header_item col-md-1">{headerItem('Name', "firstName")}</div>
-                <div className="table_header_item col-md-1">{headerItem('Surname', "lastName")}</div>
+                <div className="table_header_item col-md-1">{headerItem('Name', "fname")}</div>
+                <div className="table_header_item col-md-1">{headerItem('Surname', "lname")}</div>
                 <div className="table_header_item col-md-2">{headerItem('Email', "email")}</div>
                 <div className="table_header_item col-md-2">{headerItem('Phone number', "phone")}</div>
                 <div className="table_header_item col-md-2">Address</div>

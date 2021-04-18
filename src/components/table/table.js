@@ -46,7 +46,7 @@ export default class  Table extends Component  {
 
     onShowInfo(tableItem){
         this.setState(() => {
-            const user = `${tableItem.firstName} ${tableItem.lastName}`;
+            const user = `${tableItem.fname} ${tableItem.lname}`;
             const description = tableItem.description;
             const address = tableItem.address.streetAddress;
             const city = tableItem.address.city;
@@ -85,8 +85,8 @@ export default class  Table extends Component  {
                 >
                     <TableItem
                         id={item.id}
-                        name={item.firstName}
-                        surname={item.lastName}
+                        name={item.fname}
+                        surname={item.lname}
                         email={item.email}
                         tel={item.phone}
                         address={`
